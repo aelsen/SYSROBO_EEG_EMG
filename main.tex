@@ -1,0 +1,108 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\title{Exploring the Effectiveness of a Consumer Grade EEG and EMG as Control Inputs for Robotic Systems}
+\author{A. Bennett \\ A. Elsen, B. Liebson}
+\author{Andrew Bennett,~%
+        Antonia Elsen,~%
+        and~% 
+        Brian Liebson% <-this % stops a space
+        }
+\date{April 2015}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+%\boldmath
+\blindtext[1]
+\end{abstract}
+
+\section{Introduction}
+A variety of brain-machine interfaces (BMIs) have been developed in recent years that allow animals or humans, after intensive training, to control computer displays or robots.  While several approaches have been used, non-invasive control is much less common. Our work employs only non-invasive techniques in order to reduce risk of danger for our human subjects.
+
+The goal of this project is to create a universal, simple system to transmit commands from non-invasive brain signals and non-invasive electrical signals in the wrist to a set of defined outputs. This process will take several steps involving human subjects: using an EEG and EMG, both non-invasive, we need to find statistical correlations between an input action we ask of the subject and respective signals. We also hope to build on previous work to determine correlation between EEG and EMG activity and imagined actions and to display the encoded intentions.
+
+\section{Methods}
+\subsection{Equipment}
+\subsubsection{Electroencephalographic Device Setup}
+Twenty subjects participate in the first experiment involving the EEG device.
+The apparatus consists of:
+\begin{itemize}
+    \item \textit{Electoencephalographic (EEG) recording equipment}: The EEG recording system is a Neurosky Mindwave Mobile. The Mindwave is a consumer-grade EEG that measures signals through a singular electrode on the front of the forehead. The headset comes programmed with the manufacturer’s NeuroSky eSense, amplification off head detection, and noise filtering for EMG and 50/60HZ AC powerline interference. 
+    \item \textit{Data acquisition program}: A custom MATLAB data acquisition programs using NeuroSky drivers store data in a format compatible with BCI2000 and with MATLAB.  The data acquisition program measures and records EEG data in order to compare signals across subjects.
+\end{itemize}
+
+\subsubsection{Electromyographic Device Setup}
+Twenty subjects participated in the second experiment involving the EMG device.
+The apparatus consists of: 
+\begin{itemize}
+    \item \textit{Electromyographic (EMG) recording equipment}: The EMG recording device is a Thalmic Myo. The Myo is a noninvasive armband that measures EMG signals through eight electrodes around the thickest part of the forearm. It also measures acceleration and orientation with an accelerometer and gyroscope. Using the manufacturer's software, the device also has the ability to detect six pre-programmed gestures.
+    \item \textit{Data acquisition program}: A custom python data acquisition script was created using pre-existing open-source scripts. The data acquisition scripts communicate with the Myo to retrieve the raw EMG data. A script was also created to normalize and compare the EMG signals of each electrode, both across subjects and across data measurement sessions.
+\end{itemize}
+   
+\subsection{Human Subjects}
+\subsubsection{Characteristics and Recruitment}
+The proposed study included a gender-balanced group of 20 healthy adults, ages 18-60, who were right-handed and are without any sensory, motor, or developmental deficits. Subjects were recruited from among Olin students and staff using advertisements and word of mouth. Each subject were asked to commit up to 1 hour of participation and will not be compensated. Subjects were allowed to drop out of the study without penalty.
+The proposed ad is as follows: \par
+
+\vspace{5mm}
+\linebreak
+\scriptsize \textit{ANTONIA AND BRIAN ARE SEEKING VOLUNTEERS WHO ARE 18-60 YEARS OF AGE, RIGHT-HANDED, AND IN GOOD HEALTH FOR A STUDY OF THE RELATIONSHIP BETWEEN WRIST MOVEMENTS/CONCENTRATION WITH THE ACCOMPANYING EEG/EMG, RESPECTIVELY. EEG AND EMG ARE NON-INVASIVE RECORDING OF ELECTRICAL ACTIVITY OF THE BRAIN AND FOREARM, RESPECTIVELY, BOTH DONE WITH SURFACE ELECTRODES. EACH SUBJECT WILL PARTICIPATE IN ONE EXPERIMENTAL SESSION LASTING UP TO 1 HOUR AND WILL NOT BE COMPENSATED. IF INTERESTED, E-MAIL brian@students.olin.edu or antonia.elsen@students.olin.edu FOR AN APPOINTMENT.} \par
+
+\vspace{5mm}
+\normalsize Subjects who responded to the ad were asked to confirm that they fit the age and health requirements of the study, and were invited to make an appointment. See Appendix A. No special or vulnerable populations were used.
+
+\subsubsection{Risk and Consent}
+Regarding the designation of risk in this Protocol, we go by the Code of Federal Regulations (Title 45, § 46.102), according to which if the level of discomfort or the possibility of harm is no higher than in everyday life, the experiment is a \textbf{minimal risk}. The one specific item one does not routinely encounter in everyday life is the EEG recording procedure with a headset which involves a minor inconvenience due to the pressure it may cause around the ears. \par
+Subjects were recruited by advertisements and screened by phone. Subjects who meet the inclusion/exclusion criteria (Appendix A) were offered to schedule an appointment. When the subject came to the lab at the appointed time, he/she was accompanied into the experimental room where the testing was conducted. The experimental setup and the relevant equipment was be shown and explained. During this time, the experimenter ascertained whether the subject reads English well enough to understand the informed consent documents. Subjects for whom English is not the primary language were not used. The subject was then given the Experiment Description and Consent Form to read (see Appendices B). Subjects was encouraged to ask any questions they may have had.  Next, they were asked to read and sign the Consent Form. \par  A copy of the signed consent form was given to the subject; the original was scanned and kept in cloud storage, shared only between the researchers and strict confidence was kept with regard to all subjects’ information and collected data.
+For information about the study, subjects were encouraged to contact study directors, and with questions about their rights as research participants, to contact Brandeis Committee for Protection of Human Subjects with specific contact information.   
+
+\subsection{Sinal Acquisition}
+\subsubsection{Signal Acquisition - EEG}
+Twenty subjects participate. Each subject will don the Mindwave Movile, and be asked to perform a number of tests. The first is the subject to concentrate at an object in the room for 20 seconds. The second is the subject to meditate for 20 seconds. The raw EEG bands (Delta, Theta, Alpha, Beta, Gamma, and Mu) as well as NeuroSky’s self-defined concentration and meditation levels will be recorded in MATLAB.: numerical outputs on 0-100 scales. Third, the subject will sit until the subject blinks 20 times. The researchers will visually record blinking and compare to the MATLAB recorded number. After a short break, this cycle will repeat three times in the order of concentration, blinking, meditation, and a break in order to give the subject a larger break between concentration and meditation. The research assistants will be verbally leading the subject through these tests. This entire experiment per subject will take approximately ten minutes.
+
+\subsubsection{Signal Acquisition - EMG}
+Twenty subjects participate. Each subject will don the Myo and perform the built-in Thalmic calibration routine. The subject will be asked to perform each of five built-in gestures twenty times. While they are performing these gestures, the raw EMG signals read by the armband will be recorded in MATLAB. The accuracy of the built-in gesture recognition software will also be noted. This data acquisition procedure will take approximately ten minutes.
+
+
+
+\section{Results}
+
+\section{Discussion}
+\subsection{}
+
+
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\end{thebibliography}
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+\appendices
+\section{}
+Some text for the appendix.
+
+% use section* for acknowledgement
+\section*{Acknowledgment}
+
+
+\end{document}
