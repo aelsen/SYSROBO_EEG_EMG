@@ -5,9 +5,13 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{placeins}
-% \setlength{\textfloatsep}{0.1cm}
-% \setlength{\floatsep}{0.1cm}
-% \setlength{\intextsep}{0.1cm}
+\usepackage[font={small}]{caption}
+\setlength{\textfloatsep}{0.2cm}
+\setlength{\floatsep}{0.2cm}
+\setlength{\intextsep}{0.2cm}
+% \setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
+% \setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
+% \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
 
 
 % Check [*
@@ -26,13 +30,15 @@
 \maketitle
 
 \begin{abstract}
-Electroencephalograms and electromyographs 
+Electroencephalograms and electromyographs are devices used most commonly in exploratory research, and medical fields such as diagnostics and rehabilitation. This study investigates the accuracy of consumer-grade EEG and EMG devices, specifically the accuracy of the Neurosky Mindwave and the Thalmic Myo. Volunteers were recruited and asked to perform specific tests and gestures for each device. During these tests, the accuracy of the devices' built-in algorithms were recorded, along with the raw EEG and EMG data. These raw samples were processed using custom MATLAB scripts, to determine the correlation of signals between volunteers for each test. The built-in algorithms of the EEG device used in this study was found to be lacking in effectiveness for any use that requires a high degree of accuracy, or a variety of inputs. The built-in gesture recognition algorithms of the EMG device proved to be fairly accurate, with a mean accuracy well above 50\% for each gesture. Results of the experiment found that the algorithm's accuracy increased up to a mean of 90\% for users with smaller wrist circumferences. The raw data from the EMG device was correlated between volunteers, and mean signals were generated from the shifted samples. These mean signals exhibited noticeable differences in shape, length, and amplitude for each gesture.
 \end{abstract}
 
+\raggedbottom
 \section{Introduction}
-A variety of brain-machine interfaces (BMIs) have been developed in recent years that allow animals or humans, after intensive training, to control computer displays or robots.  While several approaches have been used, non-invasive control is much less common. Our work employs only non-invasive techniques in order to reduce risk of danger for our human subjects.
+A variety of brain-machine interfaces (BMIs) have been developed in recent years that allow animals or humans, after intensive training, to control computer displays or robots.  While several approaches have been used, non-invasive control is  less common. Our work employs only non-invasive techniques in order to reduce risk of danger for our human subjects.
+The goal of this project is to investigate the
 
-The goal of this project is to create a universal, simple system to transmit commands from non-invasive brain signals and non-invasive electrical signals in the wrist to a set of defined outputs. This process will take several steps involving human subjects: using an EEG and EMG, both non-invasive, we need to find statistical correlations between an input action we ask of the subject and respective signals. We also hope to build on previous work to determine correlation between EEG and EMG activity and imagined actions and to display the encoded intentions.
+This research experiment investigates the accuracy of commercial-grade EEG and EMG devices. In this study, we compare both EEG and EMG measurements taken from volunteers, quantifying the differences of the signals as the volunteers perform specific gestures, by determining statistical correlations between an input action we ask of the subject and respective signals. By quantifying their differences and similarities, we hope to gain some insight into the factors that determine the accuracy of the device’s gesture-determination algorithms, and how these algorithms can be further improved. 
 
 \section{Methods}
 \subsection{Equipment}
@@ -75,9 +81,7 @@ For information about the study, subjects were encouraged to contact study direc
 Twenty subjects participate. Each subject will don the Mindwave Movile, and be asked to perform a number of tests. The first is the subject to concentrate at an object in the room for 20 seconds. The second is the subject to meditate for 20 seconds. The raw EEG bands (Delta, Theta, Alpha, Beta, Gamma, and Mu) as well as NeuroSky’s self-defined concentration and meditation levels will be recorded in MATLAB.: numerical outputs on 0-100 scales. Third, the subject will sit until the subject blinks 20 times. The researchers will visually record blinking and compare to the MATLAB recorded number. After a short break, this cycle will repeat three times in the order of concentration, blinking, meditation, and a break in order to give the subject a larger break between concentration and meditation. The research assistants will be verbally leading the subject through these tests. This entire experiment per subject will take approximately ten minutes.
 
 \subsubsection{Signal Acquisition - EMG}
-Twenty subjects participate. Each subject will don the Myo and perform the built-in Thalmic calibration routine. The subject will be asked to perform each of four built-in gestures ten times, to determine the accuracy of Thalmic's gesture recognition algorithms. Then, the volunteer is asked to perform these same four gestures again, eight times each, as a python script records the raw EMG data taken from the Myo. This data acquisition procedure takes approximately ten minutes.
-
-
+Seventeen subjects participate. Each subject will don the Myo and perform the built-in Thalmic calibration routine. This calibration routine trains the subject to perform four built-in gestures. The subject will be asked to perform each of the four gestures ten times, to determine the accuracy of Thalmic's gesture recognition algorithms. Then, the volunteer is asked to perform these same four gestures again, eight times each, as a python script records the raw EMG data taken from the Myo. This data acquisition procedure takes approximately ten minutes.
 
 \section{Results}
 \subsection{EEG Results} \par
@@ -100,9 +104,9 @@ These are the results about Neurosky's eSense Meter for "Attentiveness" and "Med
 
 In order to analyze the signals, all of the subject's attention readings were averaged out at each time step. The intentional attention readings came from the "focusing on an object" test and the control readings came from the "blinking" test. Similarly goes with the meditation with the "relaxing" test in place of the "focusing on an object" test. \par 
 
-Figure \ref{attention} appears to show that the attention readings are clearly elevated when people are intentionally attentive. The mean for intentional attention is 61.751 with a standard deviation of 1.9266 when sampling from seconds 10-20 while the mean for unintentional, or control, attention is 46.1773 with a standard deviation of 2.2798 based on the same time scale. This time period was used in order to avoid the skewed beginning data sliding up from 0. Note: these units are somewhat unknown, based on a 0-100 scale created by an algorithm from the Neurosky Company. By these standards, we'd expect the conclusion to be that this EEG is fairly effective in being able to detect attentiveness, specifically intentionally. \par
+Fig. \ref{attention} appears to show that the attention readings are clearly elevated when people are intentionally attentive. The mean for intentional attention is 61.751 with a standard deviation of 1.9266 when sampling from seconds 10-20 while the mean for unintentional, or control, attention is 46.1773 with a standard deviation of 2.2798 based on the same time scale. This time period was used in order to avoid the skewed beginning data sliding up from 0. Note: these units are somewhat unknown, based on a 0-100 scale created by an algorithm from the Neurosky Company. By these standards, we'd expect the conclusion to be that this EEG is fairly effective in being able to detect attentiveness, specifically intentionally. \par
 
-In Figure \ref{meditation}, the meditation readings are less directly contrasting, they even cross over at the end. Nonetheless, the mean for intention meditation is 45.8545 with a standard deviation of 2.8718 and the mean for control meditation is 52.4364 with a standard deviation of 5.4695, both sampled from 10-20 seconds. Perhaps the intentional meditation was lower on the meditation scale because "concentrating" on meditation is an odd task. That being said, the means are definitely different, and while not as contrasting as the attention means, the standard deviation seems to make this difference seem somewhat significant. It is very curious that the lines cross over at the end, however. It seems as if this data might be flawed in a way that these graphs are not the best representation to show what the results say.  \par
+In Fig. \ref{meditation}, the meditation readings are less directly contrasting, they even cross over at the end. Nonetheless, the mean for intention meditation is 45.8545 with a standard deviation of 2.8718 and the mean for control meditation is 52.4364 with a standard deviation of 5.4695, both sampled from 10-20 seconds. Perhaps the intentional meditation was lower on the meditation scale because "concentrating" on meditation is an odd task. That being said, the means are definitely different, and while not as contrasting as the attention means, the standard deviation seems to make this difference seem somewhat significant. It is very curious that the lines cross over at the end, however. It seems as if this data might be flawed in a way that these graphs are not the best representation to show what the results say.  \par
 
 \begin{figure}[H]
     \centering
@@ -111,7 +115,7 @@ In Figure \ref{meditation}, the meditation readings are less directly contrastin
     \label{blinking}
 \end{figure} 
 
-Figure \ref{blinking} shows how many times a subject was asked to blink before the program outputted that he or she had blinked 20 times. The average number of blinks being incorrect in either direction was 8.4 across 20 people. The normal mean is 7, indicating that the subject blinked 7 more blinks on average that were not recorded. The average offset from 20 was 35 percent. \par
+Fig. \ref{blinking} shows how many times a subject was asked to blink before the program outputted that he or she had blinked 20 times. The average number of blinks being incorrect in either direction was 8.4 across 20 people. The normal mean is 7, indicating that the subject blinked 7 more blinks on average that were not recorded. The average offset from 20 was 35 percent. \par
 
 The raw data from every subject was then plotted in the graphs below to attempt to visualize some sorts of correlation: \par
 
@@ -130,7 +134,7 @@ The raw data from every subject was then plotted in the graphs below to attempt 
 \end{figure} 
 
 
-Sadly, these graphs are simply madness and spiderwebs. Each color represents one of twenty test subjects. While averaging out the data earlier gave clean, simple, and seemingly useful and significant numbers, Figure \ref{a_a_c} shows that there was not really any sort of correlation or kind of baseline as a control. The same goes with Figure \ref{a_a_i}. The only notable difference between the graphs is that in Figure \ref{a_a_i}, the amplitude is more extreme reaching the maximum and minimum, while Figure \ref{a_a_c}'s assortment of waves stays smaller and closer to the middle. There is no obvious correlation here. \par
+Sadly, these graphs are simply madness and spiderwebs. Each color represents one of twenty test subjects. While averaging out the data earlier gave clean, simple, and seemingly useful and significant numbers, fig. \ref{a_a_c} shows that there was not really any sort of correlation or kind of baseline as a control. The same goes with fig. \ref{a_a_i}. The only notable difference between the graphs is that in fig. \ref{a_a_i}, the amplitude is more extreme reaching the maximum and minimum, while fig. \ref{a_a_c}'s assortment of waves stays smaller and closer to the middle. There is no obvious correlation here. \par
 
 \begin{figure}[H]
     \centering
@@ -147,7 +151,7 @@ Sadly, these graphs are simply madness and spiderwebs. Each color represents one
 \end{figure}
 
 
-Similarly goes with the pair of meditation graphs. Once again, Figure \ref{a_m_c} and Figure \ref{a_m_i} show "spaghetti graphs" with numbers anywhere. The only significant difference is the control seems to be more stable, but only looks that way due to the different time axes. Both graphs show the ineffectiveness is recording meditation data. \par
+Similarly goes with the pair of meditation graphs. Once again, fig. \ref{a_m_c} and fig. \ref{a_m_i} show "spaghetti graphs" with numbers anywhere. The only significant difference is the control seems to be more stable, but only looks that way due to the different time axes. Both graphs show the ineffectiveness is recording meditation data. \par
 
 \vspace{5mm}
 
@@ -211,7 +215,7 @@ These are the results that analyze the individual brain waves (Delta, Gamma, The
 \end{figure}
 
 
-Amongst all these graphs, it appears that the control signal, in red, is always the upper bounds of the lines. There is a plethora of data suggesting certain signals being related to certain actions. For example, Figure \ref{w1}'s Delta signal is suggested to pertain to unconscious and resting behaviors. It is expected that there should be visual excitement regarding the meditation or attention lines: very obvious separations of lines. That being said, a similar conclusion was met in the big picture results section previously. \par
+Amongst all these graphs, it appears that the control signal, in red, is always the upper bounds of the lines. There is a plethora of data suggesting certain signals being related to certain actions. For example, fig. \ref{w1}'s Delta signal is suggested to pertain to unconscious and resting behaviors. It is expected that there should be visual excitement regarding the meditation or attention lines: very obvious separations of lines. That being said, a similar conclusion was met in the big picture results section previously. \par
 
 \begin{figure}[H]
     \centering
@@ -288,8 +292,8 @@ Blinking did end up being somewhat effective, however. Most of the issues from b
 
 \newpage
 \subsection{EMG Results}
-\subsubsection{Gesture Recognition Algorithm Results} //
-Every volunteer was asked to perform each of the four gestures ten times as the built-in Thalmic gesture recognition software was run in the background. The accuracy of this recognition software was quantified by calculating the percentage of correctly recognized gestures. Finally, the mean percentage and standard deviation was calculated for each gesture. A plot of these results can be seen below, in figure \ref{accungroup} and in table 1. The plot suggests that the mean percentage value of every gesture is approximately $80\%$ --- meaning that the software will correctly identify any given gesture four out of five times. The standard deviation is very high, suggesting that the data is relatively disjointed.
+\subsubsection{Gesture Recognition Algorithm Results} \\
+Every volunteer was asked to perform each of the four gestures ten times as the built-in Thalmic gesture recognition software was run in the background. The accuracy of this recognition software was quantified by calculating the percentage of correctly recognized gestures. Finally, the mean percentage and standard deviation was calculated for each gesture. A plot of these results can be seen below, in fig. \ref{accungroup} and in table 1. The plot suggests that the mean percentage value of every gesture is approximately $80\%$ --- meaning that the software will correctly identify any given gesture four out of five times. The standard deviation is very high, suggesting that the data is relatively disjointed.
 
 \begin{table}[h]
 \resizebox{1.7\columnwidth}{!}{\begin{minipage}{\textwidth}
@@ -307,17 +311,17 @@ Every volunteer was asked to perform each of the four gestures ten times as the 
     
     \begin{figure}[H]
     \begin{centering}
-    \includegraphics[width=.4\textwidth]{EMG/Accuracy_Ungrouped}
+    \includegraphics[width=.8\columnwidth]{EMG/Accuracy_Ungrouped}
     \caption{The accuracy (in percentage of gestures identified correct) of the built-in recognition algorithms.}
     \label{accungroup}
     \end{centering}
     \end{figure}
     
-However, when we separate volunteers by forearm width, a few trends emerge. As the chart in figure \ref{accgroup} demonstrates, the percent accuracy is noticeably higher in the volunteer group with smaller forearms, compared to the other size groups. The standard deviation of these mean values also decreases with size. This suggests that arm size may influence the ability of the algorithm to correctly guess the volunteer's performed gesture.
+However, when we separate volunteers by forearm width, a few trends emerge. As the chart in fig. \ref{accgroup} demonstrates, the percent accuracy is noticeably higher in the volunteer group with smaller forearms, compared to the other size groups. The standard deviation of these mean values also decreases with size. This suggests that arm size may influence the ability of the algorithm to correctly guess the volunteer's performed gesture.
 
     \begin{figure}[H]
     \begin{centering}
-    \includegraphics[width=.\textwidth]{EMG/Accuracy_Grouped}
+    \includegraphics[width=.8\columnwidth]{EMG/Accuracy_Grouped}
     \caption{The accuracy (in percentage of gesture identified correct) of the built-in recognition algorithms, when the volunteers are sorted into groups determined by arm thickness.}
     \label{accgroup}
     \end{centering}
@@ -327,76 +331,88 @@ However, when we separate volunteers by forearm width, a few trends emerge. As t
 \newpage
 
 
+\subsubsection{Raw EMG Data - Signal Correlation} \\ 
+Before analyzing the raw EMG data, it was necessary to shift each EMG sample based on its correlation to a 'baseline' sample signal, or an average, due to the fact that not every gesture wavelet begins at the same time in any given sample of raw data. MATLAB's built-in function "xcorr" was used to align each sample --- first, the correlation relative to the baseline was calculated for each data point in the signal. Then, the entire sample was shifted forward or backward by the lag value of the maximum point of correlation. This was done for each sample signal of each volunteer, for each gesture. Once the batch of samples for each volunteer was shifted, a baseline signal was generated by computing the element-by-element mean each sample in the batch. \\
+This correlation-shift process is illustrated in figures \ref{Spread_Min_Sahaquiel_Unshifted} - \ref{Spread_Max_Sachiel_Shifted} on pg. \pageref{Spread_Min_Sahaquiel_Unshifted}, which compare unshifted "spread" gesture samples of volunteers "Sahaquiel" (\#14) and "Sachiel" (\#13)  to their shifted results. These two volunteers were chosen because they illustrate [how correlated/uncorrelated]. Volunteer "Sahaquiel" (\#14) has the lowest mean correlation between his/her samples relative to the average of these samples for the "spread" gesture, at a mean value of 0.9176. Volunteer "Sachiel" (\#13) has the highest, at 0.9848. \\
+   An example of every "spread" gesture sample from every volunteer, correlated and shifted relative to an arbitrary sample, is given in figure \ref{spread_all_correlated}. This figure demonstrates that, while the samples belonging to the same volunteer are similar in shape, amplitude, and length, they vary --- sometimes greatly --- between each volunteer. It is therefore useful to correlate samples to a computed mean (baseline) signals for each volunteer. This is done by shifting the samples for each individual volunteer to an arbitrary signal taken from the batch (ex: the first sample measured), then averaging these shifted signals to create the mean baseline, and the correlating the samples to this baseline.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\columnwidth]{EMG/spread_all_correlated}
+    \caption{Samples from every volunteer for the gesture "spread", for each electrode. Each sample is shifted by determining the closest correlation to an arbitrary 'baseline'.}
+    \label{spread_all_correlated}
+    \end{figure}
 
-\subsubsection{Raw EMG Data - Signal Correlation} \\
-Before analyzing the raw EMG data, it was necessary to shift each EMG sample based on its correlation to a 'baseline' sample signal, or an average. [*because samples do not start at same time]. MATLAB's built-in function "xcorr" was used to align each sample --- first, the correlation relative to the baseline was calculated for each data point in the signal. Then, the entire sample was shifted forward or backward by the lag value of the maximum point of correlation. This was done for each sample signal of each volunteer, for each gesture. Once the batch of samples for each volunteer was shifted, a baseline signal was generated by computing the element-by-element mean each sample in the batch. \\
-This correlation-shift process is illustrated in figures \ref{Spread_Min_Sahaquiel_Unshifted} - \ref{Spread_Max_Sachiel_Shifted} on page \pageref{Spread_Min_Sahaquiel_Unshifted}, which compare unshifted "spread" gesture samples of volunteers "Sahaquiel" (\#14) and "Sachiel" (\#13)  to their shifted results. These two volunteers were chosen because they illustrate [how correlated/uncorrelated]. Volunteer "Sahaquiel" (\#14) has the lowest mean correlation between his/her samples relative to the average of these samples for the "spread" gesture, at a mean value of 0.9176. Volunteer "Sachiel" (\#13) has the highest, at 0.9848. A plot of the average correlations for each volunteer and gesture, relative to their mean sample, is shown in figure \ref{Average_Corr_Bar}.
+\\
+A plot of the average correlations for each volunteer and gesture, relative to their mean sample, is shown in fig. \ref{Average_Corr_Bar}. The means of these data sets is also shown in fig. \ref{Correlation_Grouped}, arranged by a qualitative assessment of volunteer arm size.
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=1\columnwidth]{EMG/Average_Corr_Bar}
+    \includegraphics[width=.95\columnwidth]{EMG/Average_Corr_Bar}
     \caption{The average correlation of the samples of each volunteer for each gesture, relative to the mean of those samples.}
     \label{Average_Corr_Bar}
     \end{figure}
     
     \begin{figure}[H]
     \centering
-    \includegraphics[width=1\columnwidth]{EMG/Correlation_Grouped}
+    \includegraphics[width=.8\columnwidth]{EMG/Correlation_Grouped}
     \caption{The average correlation of the samples for each gesture, relative to the mean of those samples, grouped by a qualitative assessment of volunteer arm size.}
     \label{Correlation_Grouped}
     \end{figure}
+    
+Fig. \ref{Correlation_Grouped} suggests that the average correlation of the samples for any given volunteer does not vary greatly with arm circumference. It does show that samples taken from a volunteer with a larger arm circumference tend to correlate less with the mean of that batch, while samples from those with a smaller or medium arm circumference tend to correlate more. However, the contrast is much less distinct. 
 
-    \begin{figure}[p]
+These findings contrast with our results from the previous section, where fig. \ref{accgroup} suggested that the success rate of the Myo's gesture recognition algorithm was directly related to the circumference of the user's arm --- the smaller the circumference, the more likely the algorithm was to recognize the gesture correctly.
+
+Finally, fig. \ref{Mean_All} demonstrates the average data from all volunteers for each gesture plotted on the same electrode graphs, to better compare and contrast the differences between the raw EMG data for each gesture.
+There are qualitatively noticeable differences between the average signals of every electrode for each gesture, in both shape, amplitude, and wavelet duration. 
+
+    \begin{figure}[H]
+    \includegraphics[width=1\columnwidth]{EMG/Mean_All}
+    \caption{Plots of the mean signals for each volunteer for each gesture.}
+    \label{Mean_All}
+    \end{figure}
+
+\subsubsection{Future Work} \\
+These results could be further investigated by [adding some small changes to the experimental method].
+It would be beneficial to measure the raw data from the Myo armband in tandem as the accuracy of the built-in gesture recognition algorithm is being tested for each volunteer. By doing this, a raw data sample could be recorded and associated with an accuracy value, allowing us to further investigate the relationship between signal shape, length, and amplitude and the algorithm's accuracy when interpreting these signals. 
+
+It would also be worthwhile to compare the accuracy of the built-in gesture recognition algorithm to similar existing algorithms published in scientific literature.
+
+Finally, these tested and refined algorithms could be applied in order to control robotic devices, such as prosthetic limbs and robotics arms, which are already being controlled using similar algorithms and medical-grade EMGs.
+
+\newpage
+\FloatBarrier
+
+
+    \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{EMG/Spread_Min_Sahaquiel_Unshifted}
     \caption{The raw, unshifted samples generated by volunteer \#14 "Sahaquiel" for the gesture "spread", for each electrode.}
     \label{Spread_Min_Sahaquiel_Unshifted}
     \end{figure}
     
-    \begin{figure}[p]
+    \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{EMG/Spread_Min_Sahaquiel_Shifted}
     \caption{The shifted samples generated by volunteer \#14 "Sahaquiel" for the gesture "spread", for each electrode.}
     \label{Spread_Min_Sahaquiel_Shifted}
     \end{figure}
     
-    
-
-An example of every "spread" gesture sample from every volunteer, correlated and shifted relative to an arbitrary sample, is given in figure \ref{spread_all_correlated}. This figure demonstrates that, while the samples belonging to the same volunteer are similar in shape, amplitude, and length, they vary, sometimes greatly, between each volunteer.
-    
     \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\columnwidth]{EMG/spread_all_correlated}
-    \caption{Samples from every volunteer for the gesture "spread", for each electrode. Each sample is shifted by determining the closest correlation to an arbitrary 'baseline'.}
-    \label{spread_all_correlated}
-    \end{figure}
-    
-
-    
-    \begin{figure}[p]
     \centering
     \includegraphics[width=1\columnwidth]{EMG/Spread_Max_Sachiel_Unshifted}
     \caption{The raw, unshifted samples generated by volunteer \#13 "Sachiel" for the gesture "spread", for each electrode.}
     \label{Spread_Max_Sachiel_Unshifted}
     \end{figure}
     
-    \begin{figure}[p]
+    \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{EMG/Spread_Max_Sachiel_Shifted}
     \caption{The shifted samples generated by volunteer \#13 "Sachiel" for the gesture "spread", for each electrode.}
     \label{Spread_Max_Sachiel_Shifted}
     \end{figure}
-    
-    \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\columnwidth]{EMG/Spread_MeanofMeans}
-    \caption{}
-    \label{Spread_MeanofMeans}
-    \end{figure}
-    
-    
-    
-    
+    \newpage
     
 \begin{thebibliography}{1}
 
@@ -405,26 +421,5 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
 \end{thebibliography}
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-\appendices
-\section{}
-Some text for the appendix.
-
-% use section* for acknowledgement
-\section*{Acknowledgment}
-
 
 \end{document}
